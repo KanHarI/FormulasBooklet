@@ -1,0 +1,139 @@
+\documentclass{article}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\makeatletter
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{STAT 251 Formula Sheet}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.45in
+\advance\evensidemargin-1.45in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+
+\begin{document}
+
+\begin{center}{\huge{\textbf{Useful formulas}}}\\
+\end{center}
+\begin{multicols*}{2}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+%------------ Basic definitions
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.46\textwidth}
+    
+        $$ 0! = 1 \qquad \forall n \in \mathbb{N}^+, n! = n(n-1)! = n\cdot(n-1)\cdots2\cdot 1 $$
+        $$ (a)_n = \prod_{k=a}^{a+n-1} k = a\cdot(a+1)\cdots(a+n-1), \qquad (a)_0 = 1, \qquad (1)_n = n! $$
+        $$ \forall n > k, {n \choose k} = \frac{n!}{n!(n-k)!} = \frac{(n-k+1)_k}{(1)_k} = \frac{(n-k+1)(n-k+2)\cdots n}{1\cdot2\cdots k} $$
+        $$ e^x = \sum_{n=0}^\infty \frac{x^n}{n!} = \lim_{n\rightarrow\infty} \left(1+\frac{x}{n}\right)^n, \qquad e \approx 2.718281828 $$
+        $$ i^2 = -1 $$
+    	$$ e^{ix} = \cos x + i \sin x $$
+    	$$ \sin x = \frac{e^{ix} - e^{-ix}}{2i}, \qquad \cos x = \frac{e^{ix}+e^{-ix}}{2} $$
+    	$$ \tan x = \frac{\sin x}{\cos x} $$
+    	$$ \pi = 4 \left( \sum_{n=0}^\infty \frac{(-1)^n}{2n+1} \right) \approx 3.141592654 $$
+%     	$$ \text{Bernoulli numbers:} \qquad B_0^+ = B_0^{-} = B_0 = 1 $$
+%     	$$ B_n^+ = 1 - \sum_{k=0}^{n-1} {n \choose k} \frac{B_k^+}{n - k -1} $$
+%     	$$ B_n^{-} = (-1)^nB_n^{+} $$
+%     	$$ \forall n \in \mathbb{N}, B_{2n} = B_{2n}^+ = B_{2n}^- $$
+	
+    \end{minipage}
+};
+%------------ Basic definitions Header ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Basic definitions};
+\end{tikzpicture}
+
+%------------ Binomial formulas
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.46\textwidth}
+    
+        $$ (x\pm y)^2 = x^2 \pm 2xy + y^2, \qquad (x\pm y)^3 = x^3 \pm 3x^2y + 3xy^2 \pm y^3 $$
+        $$ (x\pm y)^n = \sum_{k=0}^n {n \choose k} (\pm 1)^k x^{n-k}y^k $$
+        $$ a_1+a_2+\dots+a_m = n \implies {n \choose a_1, a_2, \dots, a_m} = \frac{n!}{a_1!a_2!\cdots a_m!} $$
+        $$ (x + y + z)^n = \sum_{i, j, k \in \mathbb{N}^3 | i + j + k = n} {n \choose i,j,k}x^i y^j z^k $$
+        $$ (x_1 + x_2 + \dots + x_m)^n = \sum_{a_1, a_2, \dots, a_m \in \mathbb{N}^m | a_1 + a_2 + \dots + a_m = n} {n \choose a_1, a_2, \dots a_m} x_1^{a_1} x_2^{a_2} \cdots x_m^{a_m} $$
+        $$ \forall y \in \mathbb{R}, x \in (-1, 1) \implies (1+x)^y = \sum_{k=0}^\infty {y \choose k}x^k = \sum_{k=0}^\infty \frac{(y - k + 1)_k}{k!} x^k $$
+        $$ {n \choose k} = {n \choose n-k}, \qquad \sum_{k=0}^n {n \choose k} = 2^n, \qquad {n+1 \choose k+1} = {n \choose k} + {n \choose k + 1} $$
+	
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Binomial formulas};
+\end{tikzpicture}
+
+%------------ Trig identities
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.46\textwidth}
+    
+        $$ \sin^2 x + \cos^2 x = 1 $$
+        $$ \sin (-x) = -\sin x, \qquad \cos(-x) = \cos x, \qquad \tan(-x) = -\tan x $$
+        $$ \sin \left(\frac{\pi}{2} \pm x\right) = \cos x, \qquad \sin(\pi \pm x) = \mp \sin x $$
+        $$ \cos \left(\frac{\pi}{2} \pm x\right) = \mp \sin x, \qquad \cos(\pi \pm x) = -\cos x $$
+        $$ \sin x = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n+1)!}, \qquad \cos x = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} $$ 
+        $$ \forall x \in \left(-\frac{\pi}{2}, \frac{\pi}{2}\right), \tan x = \sum_{n=1}^\infty \frac{B_{2n}(-4)^n(1-4^n)x^{2n-1}}{(2n)!} = x + \frac{x^3}{3} + \frac{2x^5}{15} + \frac{17 x^7}{315} + O(x^9) $$
+    	$$ \sin 2x = 2\sin x \cos x $$
+    	$$ \cos 2x = \cos^2 x - \sin^2 x = 2 \cos^2 x - 1 = 1 - 2\sin^2 x $$
+    	$$ \tan 2x = \frac{2\tan x}{1 - \tan^2 x} $$
+    	$$ \sin (nx) = \sum_{k\text{ odd}} (-1)^\frac{k-1}{2} {n \choose k}\cos^{n-k} x \sin^k x $$
+    	$$ \cos(nx) = \sum_{k\text{ even}} (-1)^\frac{k}{2} {n \choose k}\cos^{n-k} x \sin^k x $$
+    	$$ \sin(x \pm y) = \sin x \cos y \pm \sin y \cos x $$
+    	$$ \cos(x \pm y) = \cos x \cos y \mp \sin x \sin y $$
+    	$$ \tan(x \pm y) = \frac{\tan x \pm \tan y}{1 \mp \tan x \tan y} $$
+    	$$ \tan \left(\frac{\pi}{4} \pm x\right) = \frac{\frac{1}{\tan x} \mp 1}{1 \pm \frac{1}{\tan x}} $$
+    	$$ \sin \frac{x}{2} = \pm \sqrt{\frac{1-\cos x}{2}}, \qquad \cos \frac{x}{2} = \pm \sqrt{\frac{1+\cos x}{2}} $$
+    	$$ \tan \frac{x}{2} = \frac{\sin x}{1 + \cos x} $$
+    	$$ \tan \left(\frac{x \pm y}{2}\right) = \frac{\sin x \pm \sin y}{\cos x + \cos y} $$
+    	$$ \sin x \pm \sin y = 2\sin \left( \frac{x\pm y}{2} \right) \cos\left(\frac{x \mp y}{2}\right) $$
+	
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Trig identities};
+\end{tikzpicture}
+
+%------------ Basic definitions
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.46\textwidth}
+
+    	$$ \text{Riemann's zeta:} \quad \forall z \in \mathbb{C}, \Re z > 1, \quad \zeta(z) = \sum_{n=1}^\infty \frac{1}{n^z} $$
+    	$$ \text{Dirichlet's eta:} \forall z \in \mathbb{C}, \Re z > 0, \quad \eta(z) = \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n^z} = \left(1 - 2^{1-z} \right)\zeta(z) $$
+    	Lambert's W - the inverse of $ x\cdot e^x $, the bigger one if there are 2 inverses:
+    	$$ \forall x > -\frac{1}{e}, \quad W_0(x e^x) = x $$
+    	The smaller branch of Lambert's W:
+    	$$ \forall x \in \left[-\frac{1}{e}, -1\right], \quad W_{-1}(xe^x) = x $$
+    	$$ \forall n \in \mathbb{N}, n! = \Gamma(n+1) = \Gamma(z) = \int_0^\infty t^{z-1}e^{-t} dt $$
+	
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Special functions};
+\end{tikzpicture}
+
+\end{multicols*}
+\end{document}
