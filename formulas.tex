@@ -34,6 +34,12 @@
 \newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
 %\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
 
+
+
+\DeclareMathOperator{\tr}{tr}
+
+
+
 \begin{document}
 
 \begin{center}{\huge{\textbf{Useful formulas}}}\\
@@ -43,6 +49,7 @@
 \tikzstyle{mybox} = [draw=black, fill=white, very thick,
     rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
 \tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
 
 %------------ Basic definitions
 \begin{tikzpicture}
@@ -115,6 +122,38 @@
     \end{minipage}
 };
 \node[fancytitle, right=10pt] at (box.north west) {Trig identities};
+\end{tikzpicture}
+
+%------------ Matrices
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.46\textwidth}
+        If the eigenvalues of a a matrix $M$ are $\lambda_1, \lambda_2, \dots, \lambda_n$ than:
+        $$ |M| = \prod_{m=1}^n \lambda_m, \qquad \tr M = \sum_{m=1}^n \lambda_m $$
+        Every square matrix over the complex plane can be expressed in jordan cannonical form:
+        $$ J_{\lambda,1} = \begin{bmatrix}\lambda \end{bmatrix}, \qquad J_{\lambda, 2} = \begin{bmatrix}\lambda & 1 \\ 0 & \lambda \end{bmatrix}, \qquad J_{\lambda, n} = \begin{bmatrix} \lambda & 1 & 0 & \cdots & 0 & 0 \\ 0 & \lambda & 1 & \cdots & 0 & 0 \\ 0 & 0 & \lambda & \cdots & 0 & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & \cdots & \lambda & 1 \\ 0 & 0 & 0 & \cdots & 0 & \lambda \end{bmatrix} $$
+        $$ \forall M \in \mathbb{M}_{n \times n}(\mathbb{C}), \exists P \in \mathbb{M}_{n \times n}(\mathbb{C}), M = P^{-1} \begin{bmatrix} J_{\lambda_1, n_1} & & & \\ & J_{\lambda_2, n_2} & & \\ & & \ddots & \\ & & & J_{\lambda_m, n_m} \end{bmatrix} P $$
+        $$ e^M = \sum_{n=0}^\infty \frac{M^n}{n!} $$
+        $$ \left|e^M\right| = e^{\tr M} $$
+    	A random matrix over the complex field is diagonalizable with probability 1. If $M$ is diagonalizable: \\
+    	$$ M^n = \left(P^{-1}\begin{bmatrix}\lambda_1 & 0 & \cdots & 0  \\ 0 & \lambda_2 & \dots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots && \lambda_m \end{bmatrix}P\right)^n = P^{-1} \begin{bmatrix}\lambda_1^n & 0 & \cdots & 0  \\ 0 & \lambda_2^n & \dots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & \lambda_m^n \end{bmatrix} P $$
+	
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Matrices};
+\end{tikzpicture}
+
+%------------ Formal power series
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.46\textwidth}
+
+    	$$ \left(\sum_{n=0}^\infty a_n x^n\right) \left(\sum_{n=0}^\infty b_n x^n\right) = \sum_{n=0}^\infty \left(\left(\sum_{l=0}^n a_l b_{n-l} \right)x^n\right) $$
+    	$$ \left(\sum_{n \in \mathbb{Z}} a_n x^n\right)\left(\sum_{n \in \mathbb{Z}} b_n x^n\right) = \sum_{n,m \in \mathbb{Z}^2} a_n b_m x^{n+m} $$
+	
+    \end{minipage}
+};
+\node[fancytitle, right=10pt] at (box.north west) {Formal power series};
 \end{tikzpicture}
 
 %------------ Basic definitions
